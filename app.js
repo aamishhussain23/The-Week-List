@@ -1,6 +1,9 @@
 const express = require('express')
-const allRoutes = require('./routes/user')
+const allUserRoutes = require('./routes/user')
+const allWeekListRoutes = require('./routes/weeklist')
+const allTaskRoutes = require('./routes/task')
 const {config} = require('dotenv')
+const cookieParser = require('cookie-parser')
 const app = express()
 
 config({
@@ -8,6 +11,9 @@ config({
 })
 
 app.use(express.json())
-app.use('/api/v1', allRoutes)
+app.use(cookieParser())
+app.use('/api/v1', allUserRoutes)
+app.use('/api/v1', allWeekListRoutes)
+app.use('/api/v1', allTaskRoutes)
 
 module.exports = app

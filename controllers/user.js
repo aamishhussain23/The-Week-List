@@ -27,7 +27,7 @@ const register = async (req, res) => {
 
         const token = jwt.sign({_id : new_user._id}, process.env.JWT_SECRET)
 
-        res.cookie('token', token, {httpOnly : true, maxAge : 15 * 60 * 1000}).status(201).json({
+        res.cookie('token', token, {httpOnly : true, maxAge : 24 * 60 * 60 * 1000}).status(201).json({
             success : true,
             message : 'Registered Successfully !!'
         })
@@ -57,7 +57,7 @@ const login = async (req, res) => {
         
         if(password_match){
             const token = jwt.sign({_id : user._id}, process.env.JWT_SECRET)
-            return res.status(200).cookie("token", token, {httpOnly : true, maxAge : 15 * 60 * 1000}).json({
+            return res.status(200).cookie("token", token, {httpOnly : true, maxAge : 24 * 60 * 60 * 1000}).json({
                 success : true,
                 message : 'Logged in successfully'
             })
