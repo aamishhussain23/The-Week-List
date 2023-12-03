@@ -12,6 +12,14 @@ const weeklistSchema = new mongoose.Schema({
         // default: () => moment().tz('Asia/Kolkata').toDate()
         default: Date.now
     },
+    expireOn : {
+        type : Date,
+        default : () => new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+    },
+    timeLeft : {
+        type : String,
+        default : null
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "userCollection",

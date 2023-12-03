@@ -3,11 +3,14 @@ const mongoose = require('mongoose')
 const taskSchema = new mongoose.Schema({
     description : {
         type : String,
-        required : true
     },
     isCompleted : {
         type : Boolean,
         default : false
+    },
+    markedAt : {
+        type : Date,
+        default : null
     },
     createdAt : {
         type : Date,
