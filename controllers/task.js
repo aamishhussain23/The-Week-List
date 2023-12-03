@@ -10,10 +10,10 @@ const getAllTasks = (req, res) => {
 const createTasks = async (req, res) => {
 
     try {
-        const {description} = req.body
+        const {description, isCompleted} = req.body
         const {id} = req.params
         const weeklist = 0;
-        const newTask = await taskCollection.create({description, weeklist : id})
+        const newTask = await taskCollection.create({description, isCompleted, markedAt : new Date(Date.now()), weeklist : id})
         res.json({
             message : 'task created successfully'
         })
