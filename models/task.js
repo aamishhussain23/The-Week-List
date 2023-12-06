@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
 
 const taskSchema = new mongoose.Schema({
+    weeklistName : {
+        type : String,
+        required : true
+    },
     description : {
         type : String,
     },
@@ -15,6 +19,9 @@ const taskSchema = new mongoose.Schema({
     createdAt : {
         type : Date,
         default : Date.now
+    },
+    deadline : {
+        type : String,
     },
     weeklist: {
         type: mongoose.Schema.Types.ObjectId,

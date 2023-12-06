@@ -7,7 +7,7 @@ const check24 = async (req, res, next, msg) => {
 
     const timeDifference = new Date() - task.createdAt;
 
-    if (timeDifference > 24 * 60 * 60 * 1000) {
+    if (timeDifference > 7 * 24 * 60 * 60 * 1000) {
         return res.status(400).json({
             success: false,
             message: msg,

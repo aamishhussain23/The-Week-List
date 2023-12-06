@@ -3,9 +3,9 @@ const mongoose = require('mongoose')
 
 
 const weeklistSchema = new mongoose.Schema({
-    weeklist_number : {
-        type : Number,
-        default: 1
+    weeklistName : {
+        type : String,
+        required : true
     },
     createdAt : {
         type : Date,

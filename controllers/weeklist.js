@@ -12,24 +12,10 @@ const addWeekList = async (req, res) => {
             });
         }
 
-        const newWeeklist = new weeklistCollection();
+        const {weeklistName} = req.body
+        const user = req.user._id
 
-        const highest_weeklist = await weeklistCollection.findOne({ user: req.user._id }).sort({ weeklist_number: -1 })
-
-        if(!highest_weeklist){
-            newWeeklist.user = req.user._id
-
-            await newWeeklist.save()
-            
-            return res.status(201).json({
-                success : true,
-                message : 'first weeklist created'
-            })
-        }
-        newWeeklist.weeklist_number = highest_weeklist.weeklist_number + 1
-        newWeeklist.user = req.user._id
-
-        await newWeeklist.save()
+        await weeklistCollection.create({weeklistName, user})
 
         res.status(201).json({
             success: true,
