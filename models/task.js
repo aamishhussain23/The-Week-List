@@ -10,7 +10,7 @@ const taskSchema = new mongoose.Schema({
     },
     isCompleted : {
         type : Boolean,
-        default : false
+        required : true
     },
     markedAt : {
         type : Date,

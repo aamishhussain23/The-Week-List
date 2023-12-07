@@ -18,7 +18,6 @@ const weeklistSchema = new mongoose.Schema({
     },
     timeLeft : {
         type : String,
-        default : null
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,

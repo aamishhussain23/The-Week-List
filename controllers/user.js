@@ -1,4 +1,5 @@
 const userCollection = require("../models/user")
+const weeklistCollection = require("../models/weeklist")
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const axios = require('axios');
@@ -108,5 +109,33 @@ const notFound = (req, res) => {
     })
 }
 
+const getAllUsersWeeklists = async (req, res) => {
+    try {
+        const today = new Date()
+        const weekLists = await weeklistCollection.find({})
 
-module.exports = {home, register, login, notFound, health}
+        const array_of_weeklists = []
+        weekLists.forEach((element) => {
+            if(element.expireOn > today){
+                array_of_weeklists.push(element)
+            }
+        })
+
+        console.log(today)
+
+        res.status(200).json({
+            success : true,
+            weekLists : array_of_weeklists
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success : false,
+            message : error.message
+        })
+    }
+    
+}
+
+
+module.exports = {home, register, login, notFound, health, getAllUsersWeeklists}
