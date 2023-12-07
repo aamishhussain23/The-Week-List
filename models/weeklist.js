@@ -1,6 +1,4 @@
 const mongoose = require('mongoose')
-// const moment = require('moment-timezone');
-
 
 const weeklistSchema = new mongoose.Schema({
     weeklistName : {
@@ -9,7 +7,6 @@ const weeklistSchema = new mongoose.Schema({
     },
     createdAt : {
         type : Date,
-        // default: () => moment().tz('Asia/Kolkata').toDate()
         default: Date.now
     },
     expireOn : {
